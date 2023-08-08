@@ -41,7 +41,7 @@ import DateRange from './components/DateRange';
 
 function App() {
   const [chartData, setChartData] = useState(undefined);
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
   // Function to receive the data from DateRange component
   const handleChartData = (data) => {
@@ -57,7 +57,7 @@ function App() {
   return (
     <div className="App">
       <DateRange onChartData={handleChartData} />
-      {chartData!==undefined && <BarChart data={chartData}  /> }
+      {chartData!==undefined && <BarChart data={chartData}  /> }  
       {/* <BarChart data={chartData}  />  */}
     </div>
   );

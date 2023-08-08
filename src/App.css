@@ -36,3 +36,33 @@
     transform: rotate(360deg);
   }
 }
+
+/* Styles for the overall chart container */
+.chart-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+
+.chart {
+  flex: 1;
+}
+
+
+.hover-display {
+  width: 200px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+
+.chart-series-hovered {
+  stroke-width: 4;
+}
+
