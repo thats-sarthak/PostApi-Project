@@ -55,7 +55,7 @@ import '../App.css'
 const BarChart = ({ data }) => {
   // Extracting the x and y-axis data from the response
   const visitorsCount = data?.Visitors?.visitorsCount ;
-  console.log("data", visitorsCount)
+//   console.log("data", visitorsCount)
   const visitorsDate = data?.Visitors?.visitorsDate;
 
   const uniqueVisitorsCount = data?.uniqueVisitors?.uniqueVisitorsCount 
