@@ -1,46 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
+import React from 'react';
+import { Bar,Line } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 
-const BarChart = ({ chartData }) => {
-  const [data, setData] = useState({});
+const BarChart = ({ data }) => {
+  // Extracting the x and y-axis data from the response
+  const visitorsCount = data?.Visitors?.visitorsCount 
+  const visitorsDate = data?.Visitors?.visitorsDate
 
-  useEffect(() => {
-    setData({
-      labels: chartData.map((item) => item.uniqueVisitorsDate),
-      datasets: [
-        {
-          label: 'Unique Visitors Count',
-          data: chartData.map((item) => item.uniqueVisitorsCount),
-          backgroundColor: 'rgba(75,192,192,0.6)',
-        },
-      ],
-    });
-  }, [chartData]);
+  // Chart.js configuration
+  const chartData = {
+    labels: visitorsDate,
+    datasets: [
+      {
+        label: 'Visitors Count',
+        data: visitorsCount,
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
 
-  return (
-    <div>
-      <Bar
-        data={data}
-        options={{
-          responsive: true,
-          scales: {
-            x: {
-              title: {
-                display: true,
-                text: 'Unique Visitors Date',
-              },
-            },
-            y: {
-              title: {
-                display: true,
-                text: 'Unique Visitors Count',
-              },
-            },
-          },
-        }}
-      />
-    </div>
-  );
+// const config = {
+//     type: 'bar',
+//     data: data,
+//     options: {
+//       scales: {
+//         y: {
+//           beginAtZero: true
+//         }
+//       }
+//     },
+//   };
+
+//   const chartOptions = {
+//     scales: {
+//       x: {
+//         type: "bar", // Use 'time' type for the x-axis since it contains dates
+//         time: {
+//           unit: 'day', // Display data per day
+//         },
+//       },
+//       y: {
+//         beginAtZero: true, // Start y-axis from zero
+//       },
+//     },
+//   };
+
+const chartOptions = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top' ,
+      },
+      title: {
+        display: true,
+        text: 'Chart.js Line Chart',
+      },
+    },
+  };
+
+  return (<>
+  {console.log(chartData)}
+  <Line data={chartData} options={chartOptions} />
+  </>)
 };
 
 export default BarChart;
